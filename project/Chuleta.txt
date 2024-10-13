@@ -1,0 +1,60 @@
+CHULETA DE LO QUE HAY QUE HACER
+<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>
+
+Docker Compose********************
+	Es obligatorio usarlo.
+
+
+* Cada imagen docker debe tener el nombre de su servicio.
+* Cada servicio debe ejecutarse en un contenedor dedicado.
+* Para temas de rendimiento, el contenedor debe haberse hecho desde la penultima version estable
+de Alpine o Debian.
+* Hay que escribir un Dockerfile por servicio. Estos se llamaran en tu docker-compose.yml por el make.
+* NO SE PUEDE HACER PULL de imagenes hechas ni usar servicios como DockerHub.
+
+Se ha de implementar:
+	* 1 Docker con Nginx  con TLSv1.2 o TLS1.3 SOLO.
+	* 1 Docker con WordPress + php-fpm  SIN nginx.
+	* 1 Docker con MariaDB SIN nginx.
+	* 1 Volumen que contenga la base de datos de WordPress.
+	* 1 volumen que contenga los ficheros de la web de WordPress
+	* 1 red docker que conecte los contenedores.
+
+NOTAS: 
+	1. Tus contenedores han de reiniciarse en caso de crash.
+	2. Se ha de usar la linea "network" en tu docker-compose.yml.
+	3. Your containers musn’t be started with a command running an infinite
+loop. Thus, this also applies to any command used as entrypoint, or
+used in entrypoint scripts. The following are a few prohibited hacky
+patches: tail -f, bash, sleep infinity, while true
+
+	4. Your volumes will be available in the /home/login/data folder of the
+host machine using Docker. Of course, you have to replace the login
+with yours
+
+	5.In your WordPress database, there must be two users, one of them being the ad-
+ministrator. The administrator’s username can’t contain admin/Admin or admin-
+istrator/Administrator (e.g., admin, administrator, Administrator, admin-123, and
+so forth
+
+	6.To make things simpler, you have to configure your domain name so it points to your
+local IP address.
+This domain name must be login.42.fr. Again, you have to use your own login.
+For example, if your login is wil, wil.42.fr will redirect to the IP address pointing to
+wil’s website.
+
+	7. The latest tag is prohibited.
+	8. No password must be present in your Dockerfiles.
+	9. It is mandatory to use environment variables.
+	10. Also, it is strongly recommended to use a .env file to store
+environment variables. The .env file should be located at the root
+of the srcs directory.
+	11. Your NGINX container must be the only entrypoint into your
+infrastructure via the port 443 only, using the TLSv1.2 or TLSv1.3
+protocol.
+
+
+For obvious security reasons, any credentials, API keys, env
+variables etc... must be saved locally in a .env file and ignored by
+git. Publicly stored credentials will lead you directly to a failure
+of the project
