@@ -6,8 +6,7 @@ WORKDIR /tmp/
 COPY ["./tools/nginx_config.sh", "./tools/nginx_start.sh"] /usr/local/bin
 
 #RUN is used when the image is build.
-# We install the nginx and config it.
-RUN	apt update && apt install nginx && nginx_config.sh 
+RUN	["nginx_config.sh"] 
 
 #CMD is used when we start the container.
 CMD ["nginx_start.sh"]

@@ -11,7 +11,7 @@ services:
     build: ./requirements/nginx/.
     image: greus-ro_nginx:1.0    
     volumes:
-      -wordpress_webfiles:/var/www/:ro
+      -wordpress_webfiles:/var/www/html/:ro
     ports:
       -"9999:80"
     env-file: .env
