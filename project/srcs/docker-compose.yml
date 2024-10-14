@@ -1,18 +1,28 @@
-version: 0.1
+#version: "3.5"
 
 volumes:
-  wordpress_webfiles
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      device: /home/gabriel/Dev/42/43_Inception/wordpress/
+      o:  bind
+      type: none
 
 networks:
+  inception:
+    name: inception
 
 services:
   nginx:
-    container-name: nginx
+    container_name: nginx
     build: ./requirements/nginx/.
-    image: greus-ro_nginx:1.0    
+    image: greus-ro_nginx:1.0
     volumes:
-      -wordpress_webfiles:/var/www/html/:ro
+      - wordpress:/var/www/html/:ro
+    networks:
+     - inception
     ports:
-      -"9999:80"
-    env-file: .env
+      - "80:80"
+    env_file: .env
     restart: always
