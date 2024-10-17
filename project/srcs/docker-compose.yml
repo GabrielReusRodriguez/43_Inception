@@ -23,7 +23,7 @@ services:
     networks:
       - inception
     ports:
-      - "80:80"
+      - "443:443"
     hostname: "greus-ro.42.fr"
     env_file: ".env"
     restart: always

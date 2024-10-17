@@ -58,3 +58,5 @@ For obvious security reasons, any credentials, API keys, env
 variables etc... must be saved locally in a .env file and ignored by
 git. Publicly stored credentials will lead you directly to a failure
 of the project
+
+docker exec -it  <container> /bin/bash
