@@ -9,5 +9,7 @@ COPY  --chmod=744 "./tools/nginx_config.sh" "./tools/nginx_start.sh" /usr/local/
 #RUN is used when the image is build.
 RUN	nginx_config.sh 
 
+COPY "./conf/nginx.conf" "/etc/nginx/conf.d" 
+
 #CMD is used when we start the container.
 CMD nginx_start.sh

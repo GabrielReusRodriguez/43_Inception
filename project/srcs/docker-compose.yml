@@ -1,11 +1,11 @@
-#version: "3.5"
+#version: "3"
 
 volumes:
   wordpress:
     name: wordpress
     driver: local
     driver_opts:
-      device: /home/gabriel/Dev/42/43_Inception/wordpress/
+      device: /home/gabriel/Dev/42/43_Inception/project/wordpress/
       o:  bind
       type: none
 
@@ -21,8 +21,9 @@ services:
     volumes:
       - wordpress:/var/www/html/:ro
     networks:
-     - inception
+      - inception
     ports:
       - "80:80"
-    env_file: .env
+    hostname: "greus-ro.42.fr"
+    env_file: ".env"
     restart: always
