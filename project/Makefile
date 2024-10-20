@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
+#    By: greus-ro <greus-ro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/13 13:03:46 by gabriel           #+#    #+#              #
-#    Updated: 2024/10/17 22:30:33 by gabriel          ###   ########.fr        #
+#    Updated: 2024/10/20 11:37:52 by greus-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,10 @@ down:
 status:
 	docker ps
 
-clean:
+clean: down
 	@rm -r ${WORDPRESS_DIR}
 	@rm -r ${MARIADB_DIR}
+	docker image rm greus-ro_nginx:1.0
+	docker volume rm wordpress
 
-fclean: down clean
-
-.PHONY: all up down status build
+.PHONY: all up down status build clean

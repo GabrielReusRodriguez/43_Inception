@@ -5,7 +5,7 @@ volumes:
     name: wordpress
     driver: local
     driver_opts:
-#     device: /home/gabriel/Dev/42/43_Inception/project/wordpress/
+#      device: /home/gabriel/Dev/42/43_Inception/project/wordpress/
       device: /mnt/inception/project/wordpress
       o:  bind
       type: none
