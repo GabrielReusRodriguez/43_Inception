@@ -9,6 +9,16 @@ volumes:
 #    device: /mnt/inception/project/wordpress
       o:  bind
       type: none
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      device: /home/gabriel/Dev/42/43_Inception/project/mariadb/
+#     device: /mnt/inception/project/mariadb
+      #o : mount options
+      o: bind
+      #type of filesystem like nfs
+      type: none
 
 networks:
   inception:
@@ -28,3 +38,14 @@ services:
     hostname: "greus-ro.42.fr"
     env_file: ".env"
     restart: always
+    
+  mariadb:
+    container_name: mariadb
+    build:  ./requirements/mariadb/.
+    image: greus-ro_mariadb:1.0
+    volumes:
+      - mariadb:/var/lib/mysql:rw
+    networks:
+      - inception
+    env_file: ".env"
+    restart: "always"

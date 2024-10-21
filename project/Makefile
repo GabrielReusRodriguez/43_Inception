@@ -6,7 +6,7 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/13 13:03:46 by gabriel           #+#    #+#              #
-#    Updated: 2024/10/21 18:40:16 by gabriel          ###   ########.fr        #
+#    Updated: 2024/10/21 20:36:10 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,8 @@ clean: down
 	@rm -rf ${WORDPRESS_DIR}
 	@rm -rf ${MARIADB_DIR}
 	docker image rm greus-ro_nginx:1.0
+	docker image rm greus-ro_mariadb:1.0
 	docker volume rm wordpress
+	docker volume rm mariadb
 
 .PHONY: all up down status build clean

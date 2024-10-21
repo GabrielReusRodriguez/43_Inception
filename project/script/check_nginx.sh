@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-SERVER="10.11.250.18"
+#SERVER="10.11.250.18"
+SERVER="localhost"
 
 echo 
 echo 
