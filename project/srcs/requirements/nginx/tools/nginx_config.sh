@@ -17,6 +17,10 @@ openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
 
 #Changing owner of data to allow execu with user www-data,not root.
 #Executing with root is NOT secure.
-#chown  www-data /etc/nginx/ssl/greus-ro.crt
-#chown  www-data /etc/nginx/ssl/greus-ro.key
-#chown  --recursive  www-data  /var/lib/nginx
+
+touch /run/nginx.pid
+chwon www-data:www-data /run/nginx.pid
+chmod 777 /run/nginx.pid
+chown  www-data /etc/nginx/ssl/greus-ro.crt
+chown  www-data /etc/nginx/ssl/greus-ro.key
+chown  --recursive  www-data  /var/lib/nginx

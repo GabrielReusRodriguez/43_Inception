@@ -11,6 +11,6 @@ RUN	nginx_config.sh
 
 COPY --chown=www-data "./conf/nginx.conf" "/etc/nginx/conf.d" 
 
-#USER www-data
+USER www-data
 #CMD is used when we start the container.
 CMD nginx_start.sh
