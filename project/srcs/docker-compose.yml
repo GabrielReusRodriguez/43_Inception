@@ -5,7 +5,7 @@ volumes:
     name: wordpress
     driver: local
     driver_opts:
-      device: /home/gabriel/Dev/42/43_Inception/project/wordpress/
+      device: /home/gabriel/Dev/42/43_Inception/project/wordpress_vol/
 #    device: /mnt/inception/project/wordpress
       o:  bind
       type: none
@@ -13,7 +13,7 @@ volumes:
     name: mariadb
     driver: local
     driver_opts:
-      device: /home/gabriel/Dev/42/43_Inception/project/mariadb/
+      device: /home/gabriel/Dev/42/43_Inception/project/mariadb_vol/
 #     device: /mnt/inception/project/mariadb
       #o : mount options
       o: bind
@@ -38,7 +38,7 @@ services:
     hostname: "greus-ro.42.fr"
     env_file: ".env"
     restart: always
-    
+
   mariadb:
     container_name: mariadb
     build:  ./requirements/mariadb/.
