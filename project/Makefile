@@ -6,7 +6,7 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/13 13:03:46 by gabriel           #+#    #+#              #
-#    Updated: 2024/10/21 21:10:59 by gabriel          ###   ########.fr        #
+#    Updated: 2024/10/22 21:03:39 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ SRC_DIR			=	./srcs
 WORDPRESS_DIR	=	./wordpress_vol
 MARIADB_DIR		=	./mariadb_vol
 
-all: build up
+all: up
 
 build:
 	@mkdir -p ${WORDPRESS_DIR}
 	@mkdir -p ${MARIADB_DIR}
 
-up: 
+up: build 
 	docker compose -f ${SRC_DIR}/${NAME} up -d
 
 down: 
@@ -38,4 +38,6 @@ clean: down
 	docker volume rm wordpress
 	docker volume rm mariadb
 
-.PHONY: all up down status build clean
+re: clean up
+
+.PHONY: all up down status build clean re
