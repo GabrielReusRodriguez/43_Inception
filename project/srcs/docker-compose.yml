@@ -29,8 +29,8 @@ services:
     container_name: nginx
     build: ./requirements/nginx/.
     image: greus-ro_nginx:1.0
-    volumes:
-      - wordpress:/var/www/html/:ro
+#    volumes:
+ #     - wordpress:/var/www/html/:ro
     networks:
       - inception
     ports:
@@ -45,6 +45,17 @@ services:
     image: greus-ro_mariadb:1.0
     volumes:
       - mariadb:/var/lib/mysql:rw
+    networks:
+      - inception
+    env_file: ".env"
+    restart: "always"
+
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress/.
+    image: greus-ro_wordpress:1.0
+    volumes:
+      - wordpress:/var/www/html/:rw
     networks:
       - inception
     env_file: ".env"

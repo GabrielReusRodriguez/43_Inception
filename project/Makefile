@@ -6,7 +6,7 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/13 13:03:46 by gabriel           #+#    #+#              #
-#    Updated: 2024/10/22 21:03:39 by gabriel          ###   ########.fr        #
+#    Updated: 2024/10/22 22:09:43 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ clean: down
 	@rm -rf ${MARIADB_DIR}
 	docker image rm greus-ro_nginx:1.0
 	docker image rm greus-ro_mariadb:1.0
+	docker image rm greus-ro_wordpress:1.0
 	docker volume rm wordpress
 	docker volume rm mariadb
 
