@@ -6,7 +6,7 @@ volumes:
     driver: local
     driver_opts:
       device: /home/gabriel/Dev/42/43_Inception/project/wordpress_vol/
-#    device: /mnt/inception/project/wordpress
+#    device: /mnt/inception/project/wordpress_vol
       o:  bind
       type: none
   mariadb:
@@ -14,7 +14,7 @@ volumes:
     driver: local
     driver_opts:
       device: /home/gabriel/Dev/42/43_Inception/project/mariadb_vol/
-#     device: /mnt/inception/project/mariadb
+#     device: /mnt/inception/project/mariadb_vol
       #o : mount options
       o: bind
       #type of filesystem like nfs

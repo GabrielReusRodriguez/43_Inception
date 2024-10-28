@@ -14,14 +14,14 @@ mkdir -p /run/php
 #ls /usr/sbin/php*
 
 #I create the folder
-mkdir -p /var/www/html/$DOMAIN_NAME
+mkdir -p /var/www/html/wordpress
 mkdir -p /var/www/html/tmp
 
 #I download wordpress
 cd /var/www/html/tmp
 wget https://wordpress.org/latest.tar.gz
 tar xf latest.tar.gz
-mv /var/www/html/tmp/wordpress/* /var/www/html/$DOMAIN_NAME
+mv /var/www/html/tmp/wordpress/* /var/www/html/wordpress
 rm -rf /var/www/html/tmp
 
 #We change permissions.
