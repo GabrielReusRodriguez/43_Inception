@@ -22,3 +22,4 @@ chown mysql:mysql /run/mysqld/mysqld.sock
 
 #We copy the config of mysql, we left it at /tmp
 cp /tmp/mariadb.conf /etc/mysql/mariadb.conf.d/
+echo "${MARIADB_ROOT_PASSWORD}" > /tmp/log.txt
