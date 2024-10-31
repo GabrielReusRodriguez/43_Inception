@@ -5,7 +5,8 @@ volumes:
     name: wordpress
     driver: local
     driver_opts:
-      device: /home/gabriel/Dev/42/43_Inception/project/wordpress_vol/
+      device: /tmp/wordpress_vol/
+#      device: /home/gabriel/Dev/42/43_Inception/project/wordpress_vol/
 #    device: /mnt/inception/project/wordpress_vol
       o:  bind
       type: none
@@ -13,7 +14,8 @@ volumes:
     name: mariadb
     driver: local
     driver_opts:
-      device: /home/gabriel/Dev/42/43_Inception/project/mariadb_vol/
+      device: /tmp/mariadb_vol/
+#      device: /home/gabriel/Dev/42/43_Inception/project/mariadb_vol/
 #     device: /mnt/inception/project/mariadb_vol
       #o : mount options
       o: bind
@@ -41,7 +43,11 @@ services:
 
   mariadb:
     container_name: mariadb
-    build:  ./requirements/mariadb/.
+    build:
+      context: ./requirements/mariadb/.
+      args:
+        UID: ${CURRENT_UID}
+        GID: ${CURRENT_GID}
     image: greus-ro_mariadb:1.0
     volumes:
       - mariadb:/var/lib/mysql:rw
@@ -51,8 +57,13 @@ services:
     restart: "always"
 
   wordpress:
+#    user: "${CURRENT_UID}:${CURRENT_GID}"
     container_name: wordpress
-    build: ./requirements/wordpress/.
+    build: 
+      context: ./requirements/wordpress/.
+      args:
+        UID: ${CURRENT_UID}
+        GID: ${CURRENT_GID}
     image: greus-ro_wordpress:1.0
     volumes:
       - wordpress:/var/www/html/:rw

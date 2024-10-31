@@ -5,18 +5,18 @@ ARG GID
 WORKDIR /tmp/
 
 #Creamos el usuario para  ejecutarlo SIN necesidad de usar ROOT
-RUN addgroup --gid $GID mysql && \
-    adduser --uid $UID --gid $GID --disabled-password --gecos "" mysql
+RUN addgroup --gid $GID nonroot && \
+    adduser --uid $UID --gid $GID --disabled-password --gecos "" nonroot
 
 RUN apt update
 RUN apt install -y sudo
-RUN echo 'mysql ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+RUN echo 'nonroot ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 USER mysql
 
 #COPY  --chown=www-data --chmod=744 "./tools/mariadb_config.sh" "./tools/mariadb_start.sh" /usr/local/bin/
 
-COPY  --chmod=755 "./tools/mariadb_config.sh" "./tools/mariadb_start.sh" /usr/local/bin/
+COPY  --chmod=744 "./tools/mariadb_config.sh" "./tools/mariadb_start.sh" /usr/local/bin/
 
 COPY ./conf/mariadb.conf /tmp/mariadb.conf
 

@@ -3,17 +3,26 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
+#    By: greus-ro <greus-ro@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/13 13:03:46 by gabriel           #+#    #+#              #
-#    Updated: 2024/10/22 22:09:43 by gabriel          ###   ########.fr        #
+#    Updated: 2024/10/31 14:28:30 by greus-ro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	docker-compose.yml
 SRC_DIR			=	./srcs
-WORDPRESS_DIR	=	./wordpress_vol
-MARIADB_DIR		=	./mariadb_vol
+WORDPRESS_DIR	=	/tmp/wordpress_vol
+MARIADB_DIR		=	/tmp/mariadb_vol
+
+
+SHELL = /bin/sh
+
+CURRENT_UID := $(shell id -u)
+CURRENT_GID := $(shell id -g)
+
+export CURRENT_UID
+export CURRENT_GID
 
 all: up
 
